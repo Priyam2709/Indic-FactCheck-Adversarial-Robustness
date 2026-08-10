@@ -1,6 +1,6 @@
 # Indic Fact-Checking Adversarial Framework
 
-[![Hugging Face Model](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-blue)](https://huggingface.co/YOUR_USERNAME/YOUR_MODEL_NAME)
+[![Hugging Face Model](https://img.shields.io/badge/🤗%20Hugging%20Face-Model-blue)](https://huggingface.co/Categorica/XLM-R-Indic-Hardened)
 
 This project evaluates and hardens an XLM-RoBERTa model against adversarial attacks in Indian languages. It features a complete pipeline from dataset stratified splitting, adversarial generative augmentation, head-only fine-tuning for defense, and automated evaluation orchestration.
 
