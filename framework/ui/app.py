@@ -119,13 +119,14 @@ def generate_preview(sentence, attack_choice):
     )
     
     # For preview, show the user the exact prompt the GenerativeAttacker built!
-    prompt_built = attacker.build_prompt(sentence)
+    prompt_built = attacker.build_batch_prompt([sentence])
     generated = attacker.generate(sentence)
     
-    output += "LLM Prompt Built by Generative Engine:\n"
-    output += prompt_built + "\n"
+    output += f"Original: {sentence}\n"
+    output += f"Adversarial (Generative LLM): {generated}\n"
     output += "-" * 30 + "\n"
-    output += f"LLM Output: {generated}\n"
+    output += "LLM Prompt Built by Generative Engine (For Reference):\n"
+    output += prompt_built + "\n"
     
     return output
 

@@ -20,29 +20,30 @@ def push_model_to_hub(model_path, repo_id, token, language="hi"):
     )
     
     # Generate and upload a Model Card
-    card_data = ModelCardData(
-        language=language,
-        tags=["fact-checking", "adversarial-robustness", "indic"],
-        license="mit"
-    )
+    card_text = f"""---
+language: {language}
+tags:
+- fact-checking
+- adversarial-robustness
+- indic
+license: mit
+---
+# Defended Indic Fact-Checking Model
+
+This model has been fine-tuned and defended against adversarial attacks 
+using the Unified Adversarial Testing Framework.
+
+## Model Details
+- **Language:** {language}
+- **Task:** Fact-Checking / Claim Verification
+- **Defenses Applied:** Product of Experts (PoE), Debiased Focal Loss (DFL)
+
+## Intended Use
+Designed to verify claims in regional Indian languages with high robustness 
+against adversarial manipulations (e.g., character swapping, multi-hop temporal logic).
+"""
     
-    card_text = f"""
-    # Defended Indic Fact-Checking Model
-    
-    This model has been fine-tuned and defended against adversarial attacks 
-    using the Unified Adversarial Testing Framework.
-    
-    ## Model Details
-    - **Language:** {language}
-    - **Task:** Fact-Checking / Claim Verification
-    - **Defenses Applied:** Product of Experts (PoE), Debiased Focal Loss (DFL)
-    
-    ## Intended Use
-    Designed to verify claims in regional Indian languages with high robustness 
-    against adversarial manipulations (e.g., character swapping, multi-hop temporal logic).
-    """
-    
-    card = ModelCard(card_text, data=card_data)
+    card = ModelCard(card_text)
     card.push_to_hub(repo_id, token=token)
     
     print(f"Model successfully pushed to: https://huggingface.co/{repo_id}")
@@ -65,4 +66,4 @@ if __name__ == "__main__":
         print(f"ERROR: Model directory not found at {model_path}")
         exit(1)
         
-    push_model_to_hub(model_path, args.repo_id, token, language="Multilingual (Indic)")
+    push_model_to_hub(model_path, args.repo_id, token, language="multilingual")
