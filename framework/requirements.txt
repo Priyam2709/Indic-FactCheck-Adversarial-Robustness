@@ -1,0 +1,8 @@
+gradio
+pandas
+transformers
+torch
+huggingface_hub
+indic-nlp-library
+requests
+openpyxl
