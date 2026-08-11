@@ -9,3 +9,4 @@ torch
 datasets
 gradio
 google-genai
+indic-nlp-library
