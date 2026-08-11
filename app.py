@@ -1,6 +1,7 @@
+import os
 from framework.ui.app import demo
 
 if __name__ == "__main__":
-    # Hugging Face Spaces handles the port and server binding automatically.
-    # This root-level script allows native integration with HF Spaces and other cloud PaaS.
-    demo.launch()
+    # Render.com injects the port dynamically via the PORT env variable
+    port = int(os.environ.get("PORT", 7860))
+    demo.launch(server_name="0.0.0.0", server_port=port)
